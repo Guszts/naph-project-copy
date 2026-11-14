@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
-import coolingCardImg from '../assets/images/mascot_cooling_scene_1794666318632.jpg';
-import comfortCardImg from '../assets/images/mascot_comfort_scene_1794666318969.jpg';
-import heatingCardImg from '../assets/images/mascot_heating_scene_1794666318658.jpg';
+import coolingCardImg from '../assets/images/card_cooling.jpg';
+import comfortCardImg from '../assets/images/card_comfort.jpg';
+import heatingCardImg from '../assets/images/card_heating.jpg';
 
 /**
  * Uploaded Naph brand mark rendered cleanly on light surfaces with mix-blend-multiply.
@@ -177,7 +177,7 @@ function CardArtwork({
           referrerPolicy="no-referrer"
           onError={() => setHasError(true)}
           className={`w-full h-full select-none ${
-            variant === 'hero' ? 'object-cover object-center' : 'object-contain'
+            'object-cover object-center'
           }`}
         />
       ) : (

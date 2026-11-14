@@ -1,3 +1,4 @@
+import { HvacDecor } from './HvacDecor';
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { ArrowRight, Check, ChevronDown, Copy, Mail } from 'lucide-react';
@@ -103,7 +104,8 @@ export function BelowFoldSections({ onOpenEstimate }: BelowFoldSectionsProps) {
   return (
     <div className="relative z-20 bg-[#FAF8F4] border-t border-black/[0.08]">
       {/* Solutions Section */}
-      <section id="solutions" className="max-w-6xl mx-auto px-4 sm:px-8 py-20 sm:py-24">
+      <section id="solutions" className="relative max-w-6xl mx-auto px-4 sm:px-8 py-20 sm:py-24">
+        <HvacDecor item="filter" className="right-6 top-14 w-36" />
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -151,7 +153,8 @@ export function BelowFoldSections({ onOpenEstimate }: BelowFoldSectionsProps) {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="max-w-6xl mx-auto px-4 sm:px-8 py-20 border-t border-black/[0.07]">
+      <section id="services" className="relative max-w-6xl mx-auto px-4 sm:px-8 py-20 border-t border-black/[0.07]">
+        <HvacDecor item="condenser" className="right-[38%] top-6 w-32" />
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -263,7 +266,8 @@ export function BelowFoldSections({ onOpenEstimate }: BelowFoldSectionsProps) {
       </section>
 
       {/* Maintenance Section */}
-      <section id="maintenance" className="max-w-6xl mx-auto px-4 sm:px-8 py-20 border-t border-black/[0.07]">
+      <section id="maintenance" className="relative max-w-6xl mx-auto px-4 sm:px-8 py-20 border-t border-black/[0.07]">
+        <HvacDecor item="thermostat" className="right-6 top-10 w-28" />
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -386,7 +390,8 @@ export function BelowFoldSections({ onOpenEstimate }: BelowFoldSectionsProps) {
       </section>
 
       {/* About Us Section */}
-      <section id="about" className="max-w-6xl mx-auto px-4 sm:px-8 py-20 border-t border-black/[0.07]">
+      <section id="about" className="relative max-w-6xl mx-auto px-4 sm:px-8 py-20 border-t border-black/[0.07]">
+        <HvacDecor item="radiator" className="left-6 bottom-6 w-32" />
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
