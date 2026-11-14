@@ -4,6 +4,7 @@ import { BelowFoldSections } from './BelowFoldSections';
 import { EstimateModal } from './EstimateModal';
 import { Hero } from './Hero';
 import { Navbar } from './Navbar';
+import { TrustSection } from './TrustSection';
 import { ServiceDetailModal } from './ServiceDetailModal';
 import type { HeroFeatureCard } from '../data/hvac';
 
@@ -27,6 +28,8 @@ export function App() {
             onOpenEstimate={handleOpenEstimate}
             onSelectCard={(card) => setSelectedCard(card)}
           />
+
+          <TrustSection onOpenEstimate={handleOpenEstimate} />
 
           <BelowFoldSections onOpenEstimate={handleOpenEstimate} />
         </main>
