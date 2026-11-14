@@ -1,23 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
+import NaphApp from "@/components/NaphApp";
 
-// The home route ships no og:image, so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "Naph — Residential & Commercial Heating, Cooling & Air Quality" },
+      { name: "description", content: "Reliable heating, cooling, and indoor air quality solutions to keep your home or commercial space comfortable in every season." },
+      { property: "og:title", content: "Naph — Your comfort, in every season." },
+      { property: "og:description", content: "Reliable heating, cooling, and air quality solutions to keep your home comfortable all year round." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: NaphApp,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
