@@ -1,3 +1,4 @@
+import { toast } from 'sonner';
 import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { Check, Copy, Mail, X } from 'lucide-react';
@@ -77,6 +78,7 @@ export function EstimateModal({
         source: 'modal',
       });
       setResult(submission);
+      if (submission.mode === 'demo') toast.warning('This is just a demo', { description: 'Message sending is not set up, so nothing was sent.' });
     } catch {
       setError('Unable to reach the configured estimate endpoint. Please try again or use email.');
     } finally {
@@ -144,10 +146,10 @@ export function EstimateModal({
               <>
                 <div className="p-4 rounded-2xl bg-[#FAF8F4] border border-black/[0.08] space-y-2">
                   <p className="text-xs font-semibold text-[#171717]">
-                    Demo Mode &mdash; Ready for Endpoint Integration
+                    Demo only &mdash; your message was NOT sent
                   </p>
                   <p className="text-xs text-[#5E5B56] leading-relaxed">
-                    No backend endpoint is configured in this demo preview (<code className="font-mono">VITE_ESTIMATE_ENDPOINT</code>). Your validated request is formatted below to send or copy.
+                    This site is a demo and message sending is not set up yet. Nothing was delivered to anyone. Below is a preview of what would be sent:
                   </p>
                   <pre className="mt-2 p-3 bg-white border border-black/[0.08] rounded-xl text-[11.5px] text-[#171717] whitespace-pre-wrap font-sans leading-relaxed">
                     {result.formattedSummary}
@@ -160,7 +162,7 @@ export function EstimateModal({
                     className="inline-flex items-center justify-center gap-2 bg-[#161616] hover:bg-[#2B2B2B] text-white text-xs font-medium py-2.5 px-4 rounded-xl transition-colors"
                   >
                     <Mail className="w-3.5 h-3.5" />
-                    <span>Open Email Draft</span>
+                    <span>Open Email Draft (demo address)</span>
                   </a>
                   <button
                     type="button"

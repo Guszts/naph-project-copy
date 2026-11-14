@@ -1,3 +1,4 @@
+import { toast } from 'sonner';
 import { HvacDecor } from './HvacDecor';
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
@@ -81,6 +82,7 @@ export function BelowFoldSections({ onOpenEstimate }: BelowFoldSectionsProps) {
         source: 'contact-section',
       });
       setSubmitResult(res);
+      if (res.mode === 'demo') toast.warning('This is just a demo', { description: 'Message sending is not set up, so nothing was sent.' });
       setCopied(false);
     } catch {
       setFormError('Unable to reach the configured estimate endpoint. Please verify configuration or use email.');
@@ -535,11 +537,10 @@ export function BelowFoldSections({ onOpenEstimate }: BelowFoldSectionsProps) {
                   ) : (
                     <div className="p-4 rounded-xl bg-[#FAF8F4] border border-black/[0.08] space-y-3">
                       <p className="text-xs font-semibold text-[#171717]">
-                        Demo Mode &mdash; Estimate Summary Prepared
+                        Demo only &mdash; your message was NOT sent
                       </p>
                       <p className="text-xs text-[#5E5B56] leading-relaxed">
-                        This demonstration environment is ready for real form integration via{' '}
-                        <code className="font-mono">VITE_ESTIMATE_ENDPOINT</code>. Send or copy your prepared request below:
+                        This site is a demo and message sending is not set up yet. Nothing was delivered to anyone. Below is a preview of what would be sent:
                       </p>
                       <pre className="p-3 bg-white border border-black/[0.08] rounded-xl text-xs text-[#171717] whitespace-pre-wrap font-sans leading-relaxed">
                         {submitResult.formattedSummary}
@@ -550,7 +551,7 @@ export function BelowFoldSections({ onOpenEstimate }: BelowFoldSectionsProps) {
                           className="inline-flex items-center gap-2 bg-[#161616] hover:bg-[#2B2B2B] text-white text-xs font-medium px-4 py-2.5 rounded-xl transition-colors"
                         >
                           <Mail className="w-3.5 h-3.5" />
-                          <span>Open Email Draft</span>
+                          <span>Open Email Draft (demo address)</span>
                         </a>
                         <button
                           type="button"
