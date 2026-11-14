@@ -30,6 +30,27 @@ const SERVICE_OPTIONS = HVAC_SERVICES.map((s) => s.title);
 const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
 const VIEWPORT_CONFIG = { once: true, amount: 0.16 } as const;
 
+const TESTIMONIALS = [
+  {
+    name: 'Sarah M.',
+    location: 'Anytown, USA',
+    quote:
+      'They replaced our AC in one day and walked us through the new thermostat. Zero surprises on the invoice.',
+  },
+  {
+    name: 'David R.',
+    location: 'Springfield',
+    quote:
+      'Furnace died on a Sunday night. A technician was at our door within two hours. Fair price, great work.',
+  },
+  {
+    name: 'Priya K.',
+    location: 'Your City',
+    quote:
+      'The maintenance plan paid for itself — they caught a failing capacitor before it took out the compressor.',
+  },
+];
+
 export function BelowFoldSections({ onOpenEstimate }: BelowFoldSectionsProps) {
   const [activeCategory, setActiveCategory] = useState<(typeof CATEGORIES)[number]>('All Services');
   const [propertyScope, setPropertyScope] = useState<'residential' | 'commercial'>('residential');
@@ -38,6 +59,7 @@ export function BelowFoldSections({ onOpenEstimate }: BelowFoldSectionsProps) {
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
+  const [zipCode, setZipCode] = useState('');
   const [serviceNeeded, setServiceNeeded] = useState(SERVICE_OPTIONS[0]);
   const [message, setMessage] = useState('');
   const [formError, setFormError] = useState('');
@@ -68,6 +90,10 @@ export function BelowFoldSections({ onOpenEstimate }: BelowFoldSectionsProps) {
       setFormError('Please provide a valid email address.');
       return;
     }
+    if (!/^\d{5}(-\d{4})?$/.test(zipCode.trim())) {
+      setFormError('Please enter a valid 5-digit ZIP code.');
+      return;
+    }
 
     setFormError('');
     setSubmitting(true);
@@ -77,6 +103,7 @@ export function BelowFoldSections({ onOpenEstimate }: BelowFoldSectionsProps) {
         fullName: trimmedName,
         phone: trimmedPhone,
         email: trimmedEmail,
+        zipCode: zipCode.trim(),
         serviceNeeded: serviceNeeded ?? "",
         message: message.trim(),
         source: 'contact-section',
@@ -447,6 +474,43 @@ export function BelowFoldSections({ onOpenEstimate }: BelowFoldSectionsProps) {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section aria-label="Customer reviews" className="max-w-6xl mx-auto px-4 sm:px-8 py-20 border-t border-black/[0.07]">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={VIEWPORT_CONFIG}
+          transition={{ duration: 0.45, ease: EASE_OUT_EXPO }}
+        >
+          <p className="text-xs font-medium text-[#6B6761]">Google Reviews</p>
+          <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-[-0.025em] text-[#171717] mt-2">
+            What homeowners say
+          </h2>
+          <p className="mt-2 text-sm text-[#5E5B56]">Sample reviews shown for demonstration (Demo).</p>
+        </motion.div>
+
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+          {TESTIMONIALS.map((t, idx) => (
+            <motion.figure
+              key={t.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={VIEWPORT_CONFIG}
+              transition={{ duration: 0.42, delay: idx * 0.08, ease: EASE_OUT_EXPO }}
+              className="bg-white border border-black/[0.08] rounded-2xl p-6 flex flex-col justify-between gap-5"
+            >
+              <blockquote className="text-sm leading-relaxed text-[#3A3835]">
+                &ldquo;{t.quote}&rdquo;
+              </blockquote>
+              <figcaption className="pt-4 border-t border-black/[0.06]">
+                <p className="text-sm font-semibold text-[#171717]">{t.name}</p>
+                <p className="text-xs text-[#6B6761] mt-0.5">{t.location} &middot; Google Review (Demo)</p>
+              </figcaption>
+            </motion.figure>
+          ))}
+        </div>
+      </section>
+
       {/* Contact & FAQ Section */}
       <section id="contact" className="max-w-6xl mx-auto px-4 sm:px-8 py-20 border-t border-black/[0.07]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -616,6 +680,21 @@ export function BelowFoldSections({ onOpenEstimate }: BelowFoldSectionsProps) {
                         className="w-full px-3.5 py-2.5 text-sm bg-[#FAF8F4] border border-black/10 rounded-xl focus:outline-none focus:border-[#171717]"
                       />
                     </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="contact-zip" className="block text-xs font-medium text-[#3A3835] mb-1.5">
+                      ZIP Code
+                    </label>
+                    <input
+                      id="contact-zip"
+                      type="text"
+                      inputMode="numeric"
+                      value={zipCode}
+                      onChange={(e) => setZipCode(e.target.value)}
+                      placeholder="00000"
+                      className="w-full px-3.5 py-2.5 text-sm bg-[#FAF8F4] border border-black/10 rounded-xl focus:outline-none focus:border-[#171717]"
+                    />
                   </div>
 
                   <div>

@@ -21,6 +21,7 @@ export function EstimateModal({
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
+  const [zipCode, setZipCode] = useState('');
   const [serviceNeeded, setServiceNeeded] = useState(defaultService);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
@@ -64,6 +65,10 @@ export function EstimateModal({
       setError('Please enter a valid email address.');
       return;
     }
+    if (!/^\d{5}(-\d{4})?$/.test(zipCode.trim())) {
+      setError('Please enter a valid 5-digit ZIP code.');
+      return;
+    }
 
     setError('');
     setSubmitting(true);
@@ -73,6 +78,7 @@ export function EstimateModal({
         fullName: trimmedName,
         phone: trimmedPhone,
         email: trimmedEmail,
+        zipCode: zipCode.trim(),
         serviceNeeded: serviceNeeded ?? "",
         message: message.trim(),
         source: 'modal',
@@ -227,6 +233,21 @@ export function EstimateModal({
                   className="w-full px-3.5 py-2.5 text-sm bg-[#FAF8F4] border border-black/10 rounded-xl focus:outline-none focus:border-[#171717]"
                 />
               </div>
+            </div>
+
+            <div>
+              <label htmlFor="est-zip" className="block text-xs font-medium text-[#3A3835] mb-1">
+                ZIP Code
+              </label>
+              <input
+                id="est-zip"
+                type="text"
+                inputMode="numeric"
+                value={zipCode}
+                onChange={(e) => setZipCode(e.target.value)}
+                placeholder="00000"
+                className="w-full px-3.5 py-2.5 text-sm bg-[#FAF8F4] border border-black/10 rounded-xl focus:outline-none focus:border-[#171717]"
+              />
             </div>
 
             <div>

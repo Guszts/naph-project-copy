@@ -2,6 +2,7 @@ export interface EstimatePayload {
   fullName: string;
   phone: string;
   email: string;
+  zipCode: string;
   serviceNeeded: string;
   message: string;
   source: string;
@@ -27,6 +28,7 @@ export async function submitEstimateRequest(
     `Full Name: ${payload.fullName}`,
     `Phone Number: ${payload.phone}`,
     `Email Address: ${payload.email}`,
+    `ZIP Code: ${payload.zipCode}`,
     `Service Needed: ${payload.serviceNeeded}`,
     `Message: ${payload.message || 'No additional notes provided.'}`,
   ].join('\n');
