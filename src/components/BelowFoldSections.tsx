@@ -16,10 +16,8 @@ import {
   submitEstimateRequest,
 } from '../lib/estimateSubmission';
 import {
-  BlueCoolingIllustration,
   BrandSphereLogo,
-  CoralHeatingIllustration,
-  PinkComfortIllustration,
+  ServiceCardImage,
 } from './CardIllustrations';
 
 interface BelowFoldSectionsProps {
@@ -216,10 +214,8 @@ export function BelowFoldSections({ onOpenEstimate }: BelowFoldSectionsProps) {
                     className="relative w-full aspect-[16/10] flex items-center justify-center overflow-hidden cursor-pointer"
                     style={{ backgroundColor: service.cardBg }}
                   >
-                    <div className="w-full h-full transition-transform duration-300 ease-out group-hover:scale-105">
-                      {service.theme === 'cooling' && <BlueCoolingIllustration variant="card" />}
-                      {service.theme === 'comfort' && <PinkComfortIllustration variant="card" />}
-                      {service.theme === 'heating' && <CoralHeatingIllustration variant="card" />}
+                    <div className="w-full h-full transition-transform duration-300 ease-out ">
+                      <ServiceCardImage id={service.id} bg={service.cardBg} />
                     </div>
                     <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 bg-[#161616] text-white text-xs font-medium px-3 py-1.5 rounded-lg shadow-sm transition-transform duration-200 group-hover:translate-x-0.5">
                       <span>Get a Free Estimate</span>

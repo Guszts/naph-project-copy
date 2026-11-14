@@ -1,9 +1,38 @@
 import React, { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
-import coolingCardImg from '../assets/images/card_cooling.jpg';
-import comfortCardImg from '../assets/images/card_comfort.jpg';
-import heatingCardImg from '../assets/images/card_heating.jpg';
+import coolingCardImg from '../assets/images/hero_cooling.jpg';
+import comfortCardImg from '../assets/images/hero_comfort.jpg';
+import heatingCardImg from '../assets/images/hero_heating.jpg';
+import toolGauges from '../assets/images/tool_gauges.png';
+import toolMultimeter from '../assets/images/tool_multimeter.png';
+import toolWrench from '../assets/images/tool_wrench.png';
+import svcAc from '../assets/images/svc_ac.jpg';
+import svcHeating from '../assets/images/svc_heating.jpg';
+import svcMaintenance from '../assets/images/svc_maintenance.jpg';
+import svcAirQuality from '../assets/images/svc_air_quality.jpg';
+import svcThermostat from '../assets/images/svc_thermostat.jpg';
+import svcCommercial from '../assets/images/svc_commercial.jpg';
+
+const SERVICE_IMAGES: Record<string, { src: string; alt: string }> = {
+  'air-conditioning-services': { src: svcAc, alt: 'HVAC technician servicing an outdoor air conditioner' },
+  'heating-services': { src: svcHeating, alt: 'HVAC technician checking a home heating system' },
+  'hvac-maintenance': { src: svcMaintenance, alt: 'HVAC technician completing a maintenance checklist' },
+  'indoor-air-quality': { src: svcAirQuality, alt: 'HVAC technician replacing a ceiling air filter' },
+  'thermostat-solutions': { src: svcThermostat, alt: 'HVAC technician programming a smart thermostat' },
+  'commercial-hvac': { src: svcCommercial, alt: 'HVAC technician inspecting rooftop commercial units' },
+};
+
+/** One distinct illustrated image per service card, shown in full (never cropped). */
+export function ServiceCardImage({ id, bg }: { id: string; bg: string }) {
+  const img = SERVICE_IMAGES[id];
+  if (!img) return null;
+  return (
+    <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: bg }}>
+      <img src={img.src} alt={img.alt} loading="lazy" className="w-full h-full object-contain select-none" />
+    </div>
+  );
+}
 
 /**
  * Uploaded Naph brand mark rendered cleanly on light surfaces with mix-blend-multiply.
@@ -57,31 +86,16 @@ export function HeroClimateCircles() {
       </svg>
 
       <div className="flex items-center -space-x-2">
-        <div className="w-7 h-7 rounded-full ring-2 ring-[#FAF8F4] overflow-hidden">
-          <img
-            src={coolingCardImg}
-            alt="Cooling mascot preview"
-            referrerPolicy="no-referrer"
-            className="w-full h-full object-cover scale-125"
-          />
+        <div className="w-7 h-7 rounded-full ring-2 ring-[#FAF8F4] overflow-hidden bg-white flex items-center justify-center">
+          <img src={toolGauges} alt="Manifold gauge set illustration" className="w-[85%] h-[85%] object-contain" />
         </div>
 
-        <div className="w-7 h-7 rounded-full ring-2 ring-[#FAF8F4] overflow-hidden">
-          <img
-            src={comfortCardImg}
-            alt="Comfort mascot preview"
-            referrerPolicy="no-referrer"
-            className="w-full h-full object-cover scale-125"
-          />
+        <div className="w-7 h-7 rounded-full ring-2 ring-[#FAF8F4] overflow-hidden bg-white flex items-center justify-center">
+          <img src={toolMultimeter} alt="Multimeter illustration" className="w-[85%] h-[85%] object-contain" />
         </div>
 
-        <div className="w-7 h-7 rounded-full ring-2 ring-[#FAF8F4] overflow-hidden">
-          <img
-            src={heatingCardImg}
-            alt="Heating mascot preview"
-            referrerPolicy="no-referrer"
-            className="w-full h-full object-cover scale-125"
-          />
+        <div className="w-7 h-7 rounded-full ring-2 ring-[#FAF8F4] overflow-hidden bg-white flex items-center justify-center">
+          <img src={toolWrench} alt="Pipe wrench illustration" className="w-[85%] h-[85%] object-contain" />
         </div>
 
         <div className="w-7 h-7 rounded-full ring-2 ring-[#FAF8F4] bg-[#161616] text-white flex items-center justify-center">
@@ -177,7 +191,7 @@ function CardArtwork({
           referrerPolicy="no-referrer"
           onError={() => setHasError(true)}
           className={`w-full h-full select-none ${
-            'object-cover object-center'
+            'object-contain object-center'
           }`}
         />
       ) : (
@@ -201,7 +215,7 @@ export function BlueCoolingIllustration({ variant = 'hero' }: { variant?: 'hero'
   return (
     <CardArtwork
       src={coolingCardImg}
-      alt="Airwell HVAC cooling mascots in dynamic breeze scene"
+      alt="HVAC technician with gauges beside an outdoor AC unit"
       label="COOLING"
       fallbackBg="#28ACEA"
       variant={variant}
@@ -213,7 +227,7 @@ export function PinkComfortIllustration({ variant = 'hero' }: { variant?: 'hero'
   return (
     <CardArtwork
       src={comfortCardImg}
-      alt="Airwell HVAC year-round comfort mascots in neighborhood scene"
+      alt="HVAC technician installing a smart thermostat"
       label="COMFORT"
       fallbackBg="#FAA8D0"
       variant={variant}
@@ -225,7 +239,7 @@ export function CoralHeatingIllustration({ variant = 'hero' }: { variant?: 'hero
   return (
     <CardArtwork
       src={heatingCardImg}
-      alt="Airwell HVAC warm indoor heating mascots scene"
+      alt="HVAC technician inspecting a furnace"
       label="HEATING"
       fallbackBg="#F6705E"
       variant={variant}
