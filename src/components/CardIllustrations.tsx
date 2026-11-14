@@ -203,7 +203,7 @@ function CardArtwork({
       )}
 
       {variant === 'hero' && (
-        <span className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 bg-[#FAF8F4]/95 text-[#171717] font-display font-extrabold text-[10px] sm:text-[11px] tracking-[0.14em] px-3 py-1 rounded-full shadow-[0_2px_10px_rgba(23,23,23,0.12)] whitespace-nowrap">
+        <span className="absolute top-3 sm:top-4 left-1/2 -translate-x-1/2 bg-[#FAF8F4]/95 text-[#171717] font-display font-extrabold text-[10px] sm:text-[11px] tracking-[0.14em] px-3 py-1 rounded-full shadow-[0_2px_10px_rgba(23,23,23,0.12)] whitespace-nowrap">
           {label}
         </span>
       )}

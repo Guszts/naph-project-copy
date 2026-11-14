@@ -84,12 +84,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Naph — Heating, Cooling & Air Quality" },
       { name: "description", content: "Reliable heating, cooling, and air quality solutions." },
-      { name: "author", content: "Lovable" },
+      { name: "author", content: "Naph" },
       { property: "og:title", content: "Naph" },
       { property: "og:description", content: "Reliable heating, cooling, and air quality solutions." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
