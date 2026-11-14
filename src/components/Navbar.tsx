@@ -66,7 +66,7 @@ export function Navbar({ onOpenQuote }: NavbarProps) {
               aria-label="Call now, 24/7 emergency service (demo number)"
               className="inline-flex items-center gap-1.5 text-[12px] font-semibold text-[#171717] px-2.5 py-1.5 rounded-full hover:bg-black/5 transition-colors whitespace-nowrap"
             >
-              <Phone className="w-3.5 h-3.5 text-[#F6705E]" />
+              <Phone className="w-3.5 h-3.5 text-[#171717]" />
               <span className="hidden lg:inline">24/7 · (555) 555-0123</span>
               <span className="lg:hidden">Call</span>
             </a>
