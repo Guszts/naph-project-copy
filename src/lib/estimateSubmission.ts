@@ -12,7 +12,7 @@ export type EstimateSubmissionResult =
   | { mode: 'demo'; formattedSummary: string; mailtoHref: string };
 
 export const DEMO_CONTACT = {
-  phoneLabel: '(000) 000-0000 (Demo)',
+  phoneLabel: '(555) 555-0123 (Demo)',
   email: 'estimates@naph-hvac-demo.example',
   areaLabel: 'United States · Residential & Commercial (Demo)',
 };

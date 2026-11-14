@@ -599,7 +599,7 @@ export function BelowFoldSections({ onOpenEstimate }: BelowFoldSectionsProps) {
                         type="tel"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
-                        placeholder="(000) 000-0000"
+                        placeholder="(555) 555-0123"
                         className="w-full px-3.5 py-2.5 text-sm bg-[#FAF8F4] border border-black/10 rounded-xl focus:outline-none focus:border-[#171717]"
                       />
                     </div>

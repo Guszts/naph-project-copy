@@ -2,13 +2,13 @@ import React from 'react';
 import { BadgeCheck, ShieldCheck, Star, Award, MapPin, CreditCard, Phone } from 'lucide-react';
 
 const BADGES = [
-  { icon: ShieldCheck, title: 'Licensed, Bonded & Insured', note: 'License #HVAC-000000 (Demo)' },
+  { icon: ShieldCheck, title: 'Licensed, Bonded & Insured', note: 'License #XXXXXX (Demo)' },
   { icon: BadgeCheck, title: 'NATE-Certified Technicians', note: 'Industry-certified team' },
   { icon: Award, title: 'EPA 608 Certified', note: 'Safe refrigerant handling' },
-  { icon: Star, title: '4.9 Rating on Google', note: '150+ reviews (Demo)' },
+  { icon: Star, title: 'Google Reviews', note: 'Rating shown here (Demo)' },
 ];
 
-const CITIES = ['Dallas', 'Plano', 'Frisco', 'Irving', 'Arlington', 'McKinney', 'Garland', 'Richardson'];
+const CITIES = ['Anytown, USA', 'Springfield', 'Your City', 'Nearby County'];
 
 interface Props { onOpenEstimate: (service?: string) => void }
 
@@ -44,14 +44,14 @@ export function TrustSection({ onOpenEstimate }: Props) {
           <div className="bg-white border border-black/[0.08] rounded-3xl p-6 sm:p-8 flex flex-col gap-4">
             <MapPin className="w-6 h-6 text-[#F6705E]" aria-hidden />
             <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-[-0.025em] text-[#171717]">Areas We Serve</h2>
-            <p className="text-sm text-[#5A5854]">Proudly serving the Dallas–Fort Worth metro and surrounding areas (Demo).</p>
+            <p className="text-sm text-[#5A5854]">Proudly serving your city and surrounding areas (Demo).</p>
             <ul className="flex flex-wrap gap-2">
               {CITIES.map((c) => (
                 <li key={c} className="text-xs font-medium text-[#3A3835] bg-[#FAF8F4] border border-black/[0.06] px-3 py-1.5 rounded-full">{c}</li>
               ))}
             </ul>
-            <a href="tel:0000000000" className="inline-flex items-center gap-2 text-sm font-semibold text-[#171717]">
-              <Phone className="w-4 h-4" aria-hidden /> 24/7 Emergency: (000) 000-0000 (Demo)
+            <a href="tel:5555550123" className="inline-flex items-center gap-2 text-sm font-semibold text-[#171717]">
+              <Phone className="w-4 h-4" aria-hidden /> 24/7 Emergency: (555) 555-0123 (Demo)
             </a>
           </div>
         </div>
