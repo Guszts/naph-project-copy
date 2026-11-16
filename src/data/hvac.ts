@@ -263,7 +263,7 @@ export const ABOUT_CARDS = [
 
 export const HVAC_FAQS = [
   {
-    question: 'What types of properties does Airwell HVAC serve?',
+    question: 'What types of properties does Naph HVAC serve?',
     answer:
       'We support both residential homes and commercial spaces, including single-family residences, multi-unit properties, offices, and retail suites.',
   },
